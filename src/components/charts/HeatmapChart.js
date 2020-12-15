@@ -161,8 +161,7 @@ class HeatmapChart extends Component {
         }}
         cellOpacity={1}
         cellBorderColor={{ from: 'color', modifiers: [ [ 'darker', 0.4 ] ] }}
-        labelTextColor={{ from: 'color', modifiers: [ [ 'darker', 1.8 ] ] }}
-        enableLabel={false}
+        enableLabels={false}
         isInteractive={false}
         theme={{
           textColor: this.state.textColor,
