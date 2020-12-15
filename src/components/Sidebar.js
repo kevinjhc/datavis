@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './Sidebar.scss';
 import { SketchPicker } from "react-color";
 import Select from 'react-select';
-import chroma from 'chroma-js';
 
 const presetBackgroundColors = [
   "rgb(255,255,255)",
@@ -159,7 +158,7 @@ class Sidebar extends Component {
             <span className="close"></span>
           </div>
           {*/}
-          
+
         </div>
       </div>
     );
