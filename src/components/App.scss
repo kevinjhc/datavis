@@ -18,3 +18,19 @@ h6 {
 .chart-container-lg {
   height: 500px;
 }
+
+.rc-slider-dot-active {
+  border-color: #1D6AF0 !important;
+}
+
+.rc-slider-track {
+  background-color: #1D6AF0 !important;
+}
+
+.rc-slider-rail {
+  background-color: rgba(0,0,0,.2) !important;
+}
+
+.rc-slider-handle {
+  border: solid 2px #1D6AF0 !important;
+}

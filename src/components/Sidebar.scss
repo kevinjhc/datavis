@@ -1,10 +1,64 @@
 .sidebar {
-  overflow: initial !important;
+  overflow-y: scroll !important;
+  overflow-x: initial !important;
+  width: 260px;
+}
+
+.sidebar-brand {
+  font-size: 18px;
+  margin: 0 0 8px;
+  padding: 0 16px;
+}
+
+.sidebar-title {
+  font-size: 14px;
+  margin: 8px 0;
+  padding: 0 16px;
+}
+
+.sidebar-divider {
+  margin: 8px 16px;
+  padding: 0 16px;
+}
+
+.font-size-12 {
+  font-size: 12px !important;
+}
+
+.sidebar-menu {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.sidebar-link {
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+  margin: 0;
+  padding: 0 16px;
+}
+
+.sidebar-link:hover {
+  background: #efefef;
+}
+
+.sidebar-link.select {
+  cursor: default;
+
+  &:hover {
+    background: inherit;
+  }
+}
+
+.form-control-sm {
+  height: 200px;
 }
 
 .popover {
   position: absolute;
   z-index: 2;
+  top: 2.5rem;
+  right: 16px;
 }
 
 .cover {
@@ -17,8 +71,8 @@
 
 .circle {
   border-radius: 50%;
-  width: 14px;
-  height: 14px;
+  width: 18px;
+  height: 18px;
   margin-right: 12px;
   border: 1px solid #d1d1d1;
 }
@@ -53,7 +107,9 @@
 
 .color-value {
   flex-grow: 1;
-  text-decoration: underline;
-  text-decoration-style: dotted;
   text-transform: uppercase;
+}
+
+.edit {
+  font-size: 12px;
 }

@@ -147,6 +147,7 @@ class HeatmapChart extends Component {
         indexBy="country"
         colors={colors[this.state.colorScale]}
         margin={{ top: 100, right: 60, bottom: 60, left: 60 }}
+        padding={2}
         axisTop={{ orient: 'top', tickSize: 5, tickPadding: 5, tickRotation: -90, legend: '', legendOffset: 36 }}
         axisRight={null}
         axisBottom={null}

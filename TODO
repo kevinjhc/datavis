@@ -1,46 +1,10 @@
-Toggles:
--- Axis
--- Labels
--- Grid lines
--- Legend
--- Responsive / chart sizes
--- Gap and Spacing
-
-Colors
--- Single data series
--- Multi-series / Qualitative
--- Sequential
--- Diverging
-
 Chart Types
--- Bar / Column
-   -- Stacked and grouped
--- Horizontal Bar
--- Line / Scatterplot
--- Area
--- Donut / Pie
 -- Funnel
--- Radar
-
-Complex Chart Types
--- Bubble
 -- Sparklines
 -- Candlestick / Box plot
--- Comparison
--- Gauges
 -- Map (bubbles)
 -- Treemap
--- Heatmaps
--- Alluvial / flow
 
-Interaction
--- Hover, select states
--- Empty states
--- Pan and zoom
--- On a line chart, some data is missing
--- Tooltips
--- Customizate chart flows
--- Filters
--- Date range
-
-Data
+Customization
+-- Add/remove
+-- Re-order colors

@@ -69,12 +69,10 @@ class RadarChart extends Component {
         gridLabelOffset={36}
         enableDots={true}
         dotSize={10}
-        dotColor={{ theme: 'background' }}
         dotBorderWidth={2}
         dotBorderColor={{ from: 'color' }}
         enableDotLabel={false}
         colors={colors[this.state.colorScale]}
-        fillOpacity={0.25}
         blendMode="multiply"
         enableLabel={false}
         isInteractive={false}

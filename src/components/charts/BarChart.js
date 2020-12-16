@@ -28,10 +28,6 @@ const data = [
     id: "6",
     value: 128,
   },
-  {
-    id: "7",
-    value: 150,
-  }
 ];
 
 class BarChart extends Component {

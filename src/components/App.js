@@ -56,8 +56,9 @@ class App extends Component {
           <div className="content-wrapper">
             <div className="w-500 mx-auto">
 
+              <h6 class="flex-grow-1">Bar Chart</h6>
+
               <div className="chart-container-sm">
-                <h6>Bar Chart</h6>
                 <BarChart
                   key={this.state.textColor}
                   textColor={this.state.textColor}
@@ -138,6 +139,8 @@ class App extends Component {
 
               <div className="chart-container-lg">
                 <h6>Heatmap Chart</h6>
+                <p className="mt-0 text-muted">Recommended scale: Sequential Purple or Sequential Blue</p>
+
                 <HeatmapChart
                   key={this.state.textColor}
                   textColor={this.state.textColor}
