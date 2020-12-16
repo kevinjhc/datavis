@@ -3,7 +3,7 @@ import chroma from 'chroma-js';
 import { ResponsiveScatterPlot } from '@nivo/scatterplot';
 const colors = require('./ChartColors.js');
 
-const data = [
+let data = [
   {
     "id": "Category 1",
     "data": [
@@ -327,6 +327,241 @@ const data = [
       }
     ]
   },
+  {
+    "id": "Category 4",
+    "data": [
+      {
+        "x": 21,
+        "y": 25
+      },
+      {
+        "x": 46,
+        "y": 13
+      },
+      {
+        "x": 36,
+        "y": 11
+      },
+      {
+        "x": 45,
+        "y": 10
+      },
+      {
+        "x": 50,
+        "y": 6
+      },
+      {
+        "x": 37,
+        "y": 52
+      },
+      {
+        "x": 18,
+        "y": 66
+      },
+      {
+        "x": 25,
+        "y": 42
+      },
+      {
+        "x": 45,
+        "y": 13
+      },
+      {
+        "x": 35,
+        "y": 16
+      },
+      {
+        "x": 80,
+        "y": 50
+      },
+      {
+        "x": 37,
+        "y": 146
+      },
+      {
+        "x": 22,
+        "y": 97
+      },
+      {
+        "x": 25,
+        "y": 88
+      },
+      {
+        "x": 40,
+        "y": 51
+      },
+    ]
+  },
+  {
+    "id": "Category 5",
+    "data": [
+      {
+        "x": 11,
+        "y": 55
+      },
+      {
+        "x": 40,
+        "y": 10
+      },
+      {
+        "x": 68,
+        "y": 46
+      },
+      {
+        "x": 52,
+        "y": 28
+      },
+      {
+        "x": 21,
+        "y": 78
+      },
+      {
+        "x": 79,
+        "y": 49
+      },
+      {
+        "x": 40,
+        "y": 17
+      },
+      {
+        "x": 87,
+        "y": 14
+      },
+      {
+        "x": 29,
+        "y": 44
+      },
+      {
+        "x": 14,
+        "y": 123
+      },
+      {
+        "x": 61,
+        "y": 31
+      },
+      {
+        "x": 111,
+        "y": 83
+      },
+      {
+        "x": 39,
+        "y": 102
+      },
+      {
+        "x": 32,
+        "y": 81
+      },
+      {
+        "x": 14,
+        "y": 89
+      },
+      {
+        "x": 22,
+        "y": 45
+      }
+    ]
+  },
+  {
+    "id": "Category 6",
+    "data": [
+      {
+        "x": 11,
+        "y": 26
+      },
+      {
+        "x": 63,
+        "y": 1
+      },
+      {
+        "x": 46,
+        "y": 11
+      },
+      {
+        "x": 42,
+        "y": 110
+      },
+      {
+        "x": 55,
+        "y": 68
+      },
+      {
+        "x": 47,
+        "y": 62
+      },
+      {
+        "x": 18,
+        "y": 86
+      },
+      {
+        "x": 45,
+        "y": 92
+      },
+      {
+        "x": 45,
+        "y": 113
+      },
+      {
+        "x": 55,
+        "y": 106
+      },
+      {
+        "x": 70,
+        "y": 50
+      },
+      {
+        "x": 27,
+        "y": 106
+      },
+      {
+        "x": 52,
+        "y": 97
+      },
+      {
+        "x": 76,
+        "y": 108
+      },
+      {
+        "x": 60,
+        "y": 81
+      },
+      {
+        "x": 113,
+        "y": 110
+      },
+      {
+        "x": 50,
+        "y": 12
+      },
+      {
+        "x": 99,
+        "y": 51
+      },
+      {
+        "x": 35,
+        "y": 55
+      },
+      {
+        "x": 21,
+        "y": 11
+      },
+      {
+        "x": 57,
+        "y": 17
+      },
+      {
+        "x": 121,
+        "y": 18
+      },
+      {
+        "x": 48,
+        "y": 103
+      },
+      {
+        "x": 20,
+        "y": 59
+      },
+    ]
+  },
 ]
 
 class ScatterplotChart extends Component {
@@ -336,6 +571,7 @@ class ScatterplotChart extends Component {
     this.state = {
       textColor: this.props.textColor,
       colorScale: this.props.colorScale,
+      seriesScale: this.props.seriesScale,
     };
   }
 
@@ -343,15 +579,25 @@ class ScatterplotChart extends Component {
     this.setState({
       textColor: nextProps.textColor,
       colorScale: nextProps.colorScale,
+      seriesScale: nextProps.seriesScale,
     });
   }
 
   render() {
+    let displayData;
+    if (this.state.seriesScale === 1) {
+      displayData = data.slice(0, 1);
+    } else if (this.state.seriesScale === 3) {
+      displayData = data.slice(0, 3);
+    } else if (this.state.seriesScale === 5) {
+      displayData = data;
+    }
+
     return (
     <>
       <ResponsiveScatterPlot
-        data={data}
-        margin={{ top: 60, right: 140, bottom: 70, left: 90 }}
+        data={displayData}
+        margin={{ top: 20, right: 140, bottom: 70, left: 90 }}
         xScale={{ type: 'linear', min: 0, max: 'auto' }}
         xFormat={function(e){return e+" kg"}}
         yScale={{ type: 'linear', min: 0, max: 'auto' }}

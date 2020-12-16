@@ -3,37 +3,52 @@ import chroma from 'chroma-js';
 import { ResponsiveRadar } from '@nivo/radar';
 const colors = require('./ChartColors.js');
 
-const data = [
+let data = [
   {
     "attribute": "Attribute 1",
-    "Category 1": 64,
+    "Category": 64,
     "Category 2": 73,
-    "Category 3": 57
+    "Category 3": 57,
+    "Category 4": 57,
+    "Category 5": 57,
+    "Category 6": 57,
   },
   {
     "attribute": "Attribute 2",
-    "Category 1": 20,
+    "Category": 20,
     "Category 2": 94,
-    "Category 3": 102
+    "Category 3": 102,
+    "Category 4": 57,
+    "Category 5": 57,
+    "Category 6": 57,
   },
   {
     "attribute": "Attribute 3",
-    "Category 1": 41,
+    "Category": 41,
     "Category 2": 21,
-    "Category 3": 106
+    "Category 3": 106,
+    "Category 4": 57,
+    "Category 5": 57,
+    "Category 6": 57,
   },
   {
     "attribute": "Attribute 4",
-    "Category 1": 53,
+    "Category": 53,
     "Category 2": 78,
-    "Category 3": 105
+    "Category 3": 105,
+    "Category 4": 57,
+    "Category 5": 57,
+    "Category 6": 57,
   },
   {
     "attribute": "Attribute 5",
-    "Category 1": 86,
+    "Category": 86,
     "Category 2": 39,
-    "Category 3": 48
-  }
+    "Category 3": 48,
+    "Category 4": 57,
+    "Category 5": 57,
+    "Category 6": 57,
+  },
 ]
 
 class RadarChart extends Component {
@@ -43,6 +58,7 @@ class RadarChart extends Component {
     this.state = {
       textColor: this.props.textColor,
       colorScale: this.props.colorScale,
+      seriesScale: this.props.seriesScale,
     };
   }
 
@@ -50,15 +66,49 @@ class RadarChart extends Component {
     this.setState({
       textColor: nextProps.textColor,
       colorScale: nextProps.colorScale,
+      seriesScale: nextProps.seriesScale,
     });
   }
 
   render() {
+    let displayData;
+    let truncatedData = [];
+    let keys;
+
+    if (this.state.seriesScale === 1) {
+      displayData = data;
+
+      for (var i = 0; i < displayData.length; i++){
+        var obj = {}
+        obj["attribute"] = "Attribute " + i;
+        obj["Category"] = displayData[i]["Category"];
+        truncatedData.push(obj);
+      }
+      keys = [ "Category" ];
+
+    } else if (this.state.seriesScale === 3) {
+      displayData = data;
+
+      for (var i = 0; i < displayData.length; i++){
+        var obj = {}
+        obj["attribute"] = "Attribute " + i;
+        obj["Category"] = displayData[i]["Category"];
+        obj["Category 2"] = displayData[i]["Category 2"];
+        obj["Category 3"] = displayData[i]["Category 3"];
+        truncatedData.push(obj);
+      }
+      keys = [ "Category", "Category 2", "Category 3" ];
+
+    } else if (this.state.seriesScale === 5) {
+      truncatedData = data;
+      keys = [ "Category", "Category 2", "Category 3", "Category 4", "Category 5", "Category 6" ];
+    }
+
     return (
     <>
     <ResponsiveRadar
-        data={data}
-        keys={[ 'Category 1', 'Category 2', 'Category 3' ]}
+        data={truncatedData}
+        keys={keys}
         indexBy="attribute"
         maxValue="auto"
         margin={{ top: 70, right: 80, bottom: 40, left: 80 }}

@@ -1,5 +1,5 @@
 import { React, Component } from 'react';
-import SketchPicker from "react-color";
+import { SketchPicker } from "react-color";
 import Select from 'react-select';
 import Slider from 'rc-slider';
 
@@ -8,26 +8,24 @@ import 'rc-slider/assets/index.css';
 
 const colors = require('./charts/ChartColors.js');
 
-const presetBackgroundColors = [
-  "rgb(255,255,255)",
-  "#efefef",
-  "#181818",
-  "rgb(0,0,0)",
-];
-
-const presetTextColors = [
-  "rgb(255,255,255)",
-  "#efefef",
-  "#181818",
-  "rgb(0,0,0)",
-];
-
 const colourOptions = [
   { value: 'qualitativeLight', label: 'Qualitative Light', colors: colors.qualitativeLight },
   { value: 'qualitativeDark', label: 'Qualitative Dark', colors: colors.qualitativeDark },
   { value: 'sequentialPurple', label: 'Sequential Purple', colors: colors.sequentialPurple },
   { value: 'sequentialBlue', label: 'Sequential Blue', colors: colors.sequentialBlue },
   { value: 'diverging', label: 'Diverging', colors: colors.diverging },
+];
+
+const presetBackgroundColors = [
+  "#FFFFFF", // Main BG (Light)
+  "#EFEFEF", // Alternative BG (Light)
+  "#181818", // Alternative BG (Dark)
+  "#000000", // Main BG (Dark)
+];
+
+const presetTextColors = [
+  "#FFFFFF", // Primary Text (Dark)
+  "#181818", // Primary Text (Light)
 ];
 
 class Sidebar extends Component {
@@ -39,7 +37,8 @@ class Sidebar extends Component {
       textColor: this.props.textColor,
       displayBackgroundColorPicker: false,
       displayTextColorPicker: false,
-      colorScale: "qualitativeLight"
+      colorScale: "qualitativeLight", // Set default color scale
+      seriesScale: 3
     };
   }
 
@@ -72,6 +71,13 @@ class Sidebar extends Component {
     this.props.onColorScaleChange(e.value);
   };
 
+  handleSeriesScaleChange = val => {
+    this.setState({
+      seriesScale: val,
+    });
+    this.props.onSeriesScaleChange(val);
+  };
+
   handleClose = () => {
     this.setState({ displayBackgroundColorPicker: false, displayTextColorPicker: false });
   };
@@ -85,7 +91,7 @@ class Sidebar extends Component {
           <div className="sidebar-brand">
             <div>
               Data Vis Palette Tool
-              <p class="font-size-12 mt-0 text-muted">By: Kevin Chang</p>
+              <p className="font-size-12 mt-0 text-muted">By: Kevin Chang</p>
             </div>
           </div>
 
@@ -139,15 +145,16 @@ class Sidebar extends Component {
 
           <div className="sidebar-divider my-10"></div>
 
-          <h5 className="sidebar-title">Number of Series</h5>
+          <h5 className="sidebar-title">Chart Complexity</h5>
 
-          <div className="sidebar-link select" style={{padding: "6px 20px 0"}}>
+          <div className="sidebar-link select" style={{padding: "6px 20px 24px"}}>
             <Slider
               min={1}
               max={5}
               defaultValue={3}
-              marks={{ 1: "Few", 2: "", 3: "Some", 4: "", 5: "Many" }}
-              step={null} />
+              marks={{ 1: "Low", 3: "Medium", 5: "High" }}
+              step={null}
+              onChange={this.handleSeriesScaleChange} />
           </div>
 
           <div className="sidebar-divider my-10"></div>
@@ -165,7 +172,7 @@ class Sidebar extends Component {
 
           {colors[this.state.colorScale].map((value, index) => {
             return (
-              <div className="sidebar-link d-flex align-items-center justify-content-between">
+              <div key={index} className="sidebar-link d-flex align-items-center justify-content-between">
                 <div className="drag"></div>
                 <span className="circle" style={{background: value}}></span>
                 <span className="color-value">{value}</span>

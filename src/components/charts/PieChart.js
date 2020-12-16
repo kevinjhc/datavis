@@ -3,7 +3,7 @@ import chroma from 'chroma-js';
 import { ResponsivePie } from '@nivo/pie';
 const colors = require('./ChartColors.js');
 
-const data = [
+let data = [
   {
     "id": "Category 1",
     "label": "Category 1",
@@ -28,7 +28,13 @@ const data = [
     "id": "Category 5",
     "label": "Category 5",
     "value": 439,
+  },
+  {
+    "id": "Category 6",
+    "label": "Category 6",
+    "value": 79,
   }
+
 ]
 
 class PieChart extends Component {
@@ -38,6 +44,7 @@ class PieChart extends Component {
     this.state = {
       textColor: this.props.textColor,
       colorScale: this.props.colorScale,
+      seriesScale: this.props.seriesScale,
     };
   }
 
@@ -45,15 +52,25 @@ class PieChart extends Component {
     this.setState({
       textColor: nextProps.textColor,
       colorScale: nextProps.colorScale,
+      seriesScale: nextProps.seriesScale,
     });
   }
 
   render() {
+    let displayData;
+    if (this.state.seriesScale === 1) {
+      displayData = data.slice(0, 1);
+    } else if (this.state.seriesScale === 3) {
+      displayData = data.slice(0, 3);
+    } else if (this.state.seriesScale === 5) {
+      displayData = data;
+    }
+
     return (
     <>
       <ResponsivePie
-        data={data}
-        margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
+        data={displayData}
+        margin={{ top: 20, right: 80, bottom: 80, left: 80 }}
         innerRadius={0.5}
         padAngle={0.7}
         colors={colors[this.state.colorScale]}

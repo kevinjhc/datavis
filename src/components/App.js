@@ -19,12 +19,14 @@ class App extends Component {
     this.state = {
       backgroundColor: '#ffffff',
       textColor: '#000000',
-      colorScale: "qualitativeLight"
+      colorScale: "qualitativeLight",
+      seriesScale: 3
     };
 
     this.handleBackgroundColorChange = this.handleBackgroundColorChange.bind(this);
     this.handleTextColorChange = this.handleTextColorChange.bind(this);
     this.handleColorScaleChange = this.handleColorScaleChange.bind(this);
+    this.handleSeriesScaleChange = this.handleSeriesScaleChange.bind(this);
   }
 
   handleBackgroundColorChange(color) {
@@ -39,6 +41,10 @@ class App extends Component {
     this.setState({colorScale: colorScale});
   }
 
+  handleSeriesScaleChange(colorScale) {
+    this.setState({seriesScale: colorScale});
+  }
+
   render() {
 
     return (
@@ -51,96 +57,112 @@ class App extends Component {
             textColor={this.state.textColor}
             onTextColorChange={this.handleTextColorChange}
             colorScale={this.state.colorScale}
-            onColorScaleChange={this.handleColorScaleChange} />
+            onColorScaleChange={this.handleColorScaleChange}
+            seriesScale={this.state.seriesScale}
+            onSeriesScaleChange={this.handleSeriesScaleChange} />
 
           <div className="content-wrapper">
             <div className="w-500 mx-auto">
 
-              <h6 class="flex-grow-1">Bar Chart</h6>
-
+              <h6 className="flex-grow-1">Bar Chart</h6>
+              <p className="mt-0 text-muted">Recommended: Qualitative</p>
               <div className="chart-container-sm">
                 <BarChart
                   key={this.state.textColor}
                   textColor={this.state.textColor}
-                  colorScale={this.state.colorScale} />
+                  colorScale={this.state.colorScale}
+                  seriesScale={this.state.seriesScale} />
               </div>
 
               <hr />
 
+              <h6>Stacked Bar Chart</h6>
+              <p className="mt-0 text-muted">Recommended: Qualitative or Sequential</p>
               <div className="chart-container-sm">
-                <h6>Stacked Bar Chart</h6>
                 <StackedBarChart
                   key={this.state.textColor}
                   textColor={this.state.textColor}
-                  colorScale={this.state.colorScale} />
+                  colorScale={this.state.colorScale}
+                  seriesScale={this.state.seriesScale} />
               </div>
 
               <hr />
 
+              <h6>Grouped Bar Chart</h6>
+              <p className="mt-0 text-muted">Recommended: Qualitative</p>
               <div className="chart-container-sm">
-                <h6>Grouped Bar Chart</h6>
                 <GroupedBarChart
                   key={this.state.textColor}
                   textColor={this.state.textColor}
-                  colorScale={this.state.colorScale} />
+                  colorScale={this.state.colorScale}
+                  seriesScale={this.state.seriesScale} />
               </div>
 
               <hr />
 
+              <h6>Line Chart</h6>
+              <p className="mt-0 text-muted">Recommended: Qualitative</p>
               <div className="chart-container-md">
-                <h6>Line Chart</h6>
                 <LineChart
                   key={this.state.textColor}
                   textColor={this.state.textColor}
-                  colorScale={this.state.colorScale} />
+                  colorScale={this.state.colorScale}
+                  seriesScale={this.state.seriesScale} />
               </div>
 
               <hr />
 
+              <h6>Area Chart</h6>
+              <p className="mt-0 text-muted">Recommended: Qualitative</p>
               <div className="chart-container-md">
-                <h6>Area Chart</h6>
                 <AreaChart
                   key={this.state.textColor}
                   textColor={this.state.textColor}
-                  colorScale={this.state.colorScale} />
+                  colorScale={this.state.colorScale}
+                  seriesScale={this.state.seriesScale} />
               </div>
 
               <hr />
 
+              <h6>Scatter Plot Chart</h6>
+              <p className="mt-0 text-muted">Recommended: Qualitative Sequential, or Diverging</p>
               <div className="chart-container-md">
-                <h6>Scatter Plot Chart</h6>
                 <ScatterPlotChart
                   key={this.state.textColor}
                   textColor={this.state.textColor}
-                  colorScale={this.state.colorScale} />
+                  colorScale={this.state.colorScale}
+                  seriesScale={this.state.seriesScale} />
               </div>
 
               <hr />
 
+              <h6>Pie Chart</h6>
+              <p className="mt-0 text-muted">Recommended: Qualitative or Sequential</p>
               <div className="chart-container-sm">
-                <h6>Pie Chart</h6>
+
                 <PieChart
                   key={this.state.textColor}
                   textColor={this.state.textColor}
-                  colorScale={this.state.colorScale} />
+                  colorScale={this.state.colorScale}
+                  seriesScale={this.state.seriesScale} />
               </div>
 
               <hr />
 
+              <h6>Radar Chart</h6>
               <div className="chart-container-lg">
-                <h6>Radar Chart</h6>
                 <RadarChart
                   key={this.state.textColor}
                   textColor={this.state.textColor}
-                  colorScale={this.state.colorScale} />
+                  colorScale={this.state.colorScale}
+                  seriesScale={this.state.seriesScale} />
               </div>
 
               <hr />
 
+              <h6>Heatmap Chart</h6>
+              <p className="mt-0 text-muted">Recommended: Sequential or Diverging</p>
               <div className="chart-container-lg">
-                <h6>Heatmap Chart</h6>
-                <p className="mt-0 text-muted">Recommended scale: Sequential Purple or Sequential Blue</p>
-
                 <HeatmapChart
                   key={this.state.textColor}
                   textColor={this.state.textColor}

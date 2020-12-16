@@ -1,10 +1,12 @@
 Chart Types
 -- Funnel
--- Sparklines
--- Candlestick / Box plot
+-- Sparklines (qual or semantic)
+-- Candlestick / Box plot (qual)
 -- Map (bubbles)
 -- Treemap
+-- Choropleth
+
+
 
 Customization
--- Add/remove
 -- Re-order colors

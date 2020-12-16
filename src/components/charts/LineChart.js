@@ -3,7 +3,7 @@ import chroma from 'chroma-js';
 import { ResponsiveLine } from '@nivo/line';
 const colors = require('./ChartColors.js');
 
-const data = [
+let data = [
   {
     "id": "Category 1",
     "data": [
@@ -91,6 +91,93 @@ const data = [
       },
     ]
   },
+  {
+    "id": "Category 4",
+    "data": [
+      {
+        "x": "1",
+        "y": 47
+      },
+      {
+        "x": "2",
+        "y": 276
+      },
+      {
+        "x": "3",
+        "y": 8
+      },
+      {
+        "x": "4",
+        "y": 156
+      },
+      {
+        "x": "5",
+        "y": 174
+      },
+      {
+        "x": "6",
+        "y": 284
+      },
+    ]
+  },
+  {
+    "id": "Category 5",
+    "data": [
+      {
+        "x": "1",
+        "y": 47
+      },
+      {
+        "x": "2",
+        "y": 276
+      },
+      {
+        "x": "3",
+        "y": 8
+      },
+      {
+        "x": "4",
+        "y": 156
+      },
+      {
+        "x": "5",
+        "y": 174
+      },
+      {
+        "x": "6",
+        "y": 284
+      },
+    ]
+  },
+  {
+    "id": "Category 6",
+    "data": [
+      {
+        "x": "1",
+        "y": 47
+      },
+      {
+        "x": "2",
+        "y": 276
+      },
+      {
+        "x": "3",
+        "y": 8
+      },
+      {
+        "x": "4",
+        "y": 156
+      },
+      {
+        "x": "5",
+        "y": 174
+      },
+      {
+        "x": "6",
+        "y": 284
+      },
+    ]
+  },
 ];
 
 class LineChart extends Component {
@@ -100,6 +187,7 @@ class LineChart extends Component {
     this.state = {
       textColor: this.props.textColor,
       colorScale: this.props.colorScale,
+      seriesScale: this.props.seriesScale,
     };
   }
 
@@ -107,16 +195,27 @@ class LineChart extends Component {
     this.setState({
       textColor: nextProps.textColor,
       colorScale: nextProps.colorScale,
+      seriesScale: nextProps.seriesScale,
     });
   }
 
   render() {
+
+    let displayData;
+    if (this.state.seriesScale === 1) {
+      displayData = data.slice(0, 1);
+    } else if (this.state.seriesScale === 3) {
+      displayData = data.slice(0, 3);
+    } else if (this.state.seriesScale === 5) {
+      displayData = data;
+    }
+
     return (
 
     <>
       <ResponsiveLine
-        data={data}
-        margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
+        data={displayData}
+        margin={{ top: 20, right: 110, bottom: 50, left: 60 }}
         xScale={{ type: 'point' }}
         yScale={{ type: 'linear', min: 'auto', max: 'auto', stacked: true, reverse: false }}
         yFormat=" >-.2f"

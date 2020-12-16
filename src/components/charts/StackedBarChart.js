@@ -3,42 +3,60 @@ import chroma from 'chroma-js';
 import { ResponsiveBar } from '@nivo/bar';
 const colors = require('./ChartColors.js');
 
-const data = [
+let data = [
   {
     id: "1",
     "Category": 83,
     "Category 2": 129,
     "Category 3": 74,
+    "Category 4": 74,
+    "Category 5": 74,
+    "Category 6": 114,
   },
   {
     id: "2",
     "Category": 83,
     "Category 2": 113,
     "Category 3": 131,
+    "Category 4": 74,
+    "Category 5": 74,
+    "Category 6": 68,
   },
   {
     id: "3",
     "Category": 36,
     "Category 2": 53,
     "Category 3": 191,
+    "Category 4": 74,
+    "Category 5": 74,
+    "Category 6": 134,
   },
   {
     id: "4",
     "Category": 54,
     "Category 2": 52,
     "Category 3": 177,
+    "Category 4": 74,
+    "Category 5": 74,
+    "Category 6": 124,
   },
   {
     id: "5",
     "Category": 13,
     "Category 2": 160,
     "Category 3": 188,
+    "Category 4": 74,
+    "Category 5": 74,
+    "Category 6": 144,
   },
   {
     id: "6",
     "Category": 128,
     "Category 2": 34,
     "Category 3": 6,
+    "Category 4": 74,
+    "Category 5": 74,
+    "Category 6": 154,
   },
 ];
 
@@ -49,6 +67,7 @@ class StackedBarChart extends Component {
     this.state = {
       textColor: this.props.textColor,
       colorScale: this.props.colorScale,
+      seriesScale: this.props.seriesScale,
     };
   }
 
@@ -56,16 +75,52 @@ class StackedBarChart extends Component {
     this.setState({
       textColor: nextProps.textColor,
       colorScale: nextProps.colorScale,
+      seriesScale: nextProps.seriesScale,
     });
   }
 
   render() {
+
+    let displayData;
+    let truncatedData = [];
+    let keys;
+
+    if (this.state.seriesScale === 1) {
+      displayData = data;
+
+      for (var i = 0; i < displayData.length; i++){
+        var obj = {}
+        obj["id"] = i;
+        obj["Category"] = displayData[i]["Category"];
+        obj["Category 2"] = displayData[i]["Category 2"];
+        truncatedData.push(obj);
+      }
+      keys = [ "Category", "Category 2" ];
+
+    } else if (this.state.seriesScale === 3) {
+      displayData = data;
+
+      for (var i = 0; i < displayData.length; i++){
+        var obj = {}
+        obj["id"] = i;
+        obj["Category"] = displayData[i]["Category"];
+        obj["Category 2"] = displayData[i]["Category 2"];
+        obj["Category 3"] = displayData[i]["Category 3"];
+        truncatedData.push(obj);
+      }
+      keys = [ "Category", "Category 2", "Category 3" ];
+
+    } else if (this.state.seriesScale === 5) {
+      truncatedData = data;
+      keys = [ "Category", "Category 2", "Category 3", "Category 4", "Category 5", "Category 6" ];
+    }
+
     return (
     <>
       <ResponsiveBar
-        data={data}
-        keys={[ "Category", "Category 2", "Category 3" ]}
-        margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
+        data={truncatedData}
+        keys={keys}
+        margin={{ top: 20, right: 130, bottom: 50, left: 60 }}
         padding={0.3}
         innerPadding={1}
         colors={colors[this.state.colorScale]}

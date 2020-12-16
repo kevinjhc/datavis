@@ -3,7 +3,7 @@ import chroma from 'chroma-js';
 import { ResponsiveBar } from '@nivo/bar';
 const colors = require('./ChartColors.js');
 
-const data = [
+let data = [
   {
     id: "1",
     value: 83,
@@ -37,6 +37,7 @@ class BarChart extends Component {
     this.state = {
       textColor: this.props.textColor,
       colorScale: this.props.colorScale,
+      seriesScale: this.props.seriesScale,
     };
   }
 
@@ -44,15 +45,26 @@ class BarChart extends Component {
     this.setState({
       textColor: nextProps.textColor,
       colorScale: nextProps.colorScale,
+      seriesScale: nextProps.seriesScale,
     });
   }
 
   render() {
+
+    let displayData;
+    if (this.state.seriesScale === 1) {
+      displayData = data.slice(0, 1);
+    } else if (this.state.seriesScale === 3) {
+      displayData = data.slice(0, 3);
+    } else if (this.state.seriesScale === 5) {
+      displayData = data;
+    }
+
     return (
     <>
       <ResponsiveBar
-        data={data}
-        margin={{ top: 50, right: 20, bottom: 50, left: 60 }}
+        data={displayData}
+        margin={{ top: 20, right: 20, bottom: 50, left: 60 }}
         padding={0.3}
         colors={colors[this.state.colorScale]}
         axisTop={null}
