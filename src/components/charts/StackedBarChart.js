@@ -124,6 +124,9 @@ class StackedBarChart extends Component {
         padding={0.3}
         innerPadding={1}
         colors={colors[this.state.colorScale]}
+        // colors={{ scheme: 'blues' }}
+        // valueScale={{ type: 'linear' }}
+        // indexScale={{ type: 'band', round: true }}
         axisTop={null}
         axisRight={null}
         axisBottom={{

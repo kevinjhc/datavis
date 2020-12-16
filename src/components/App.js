@@ -62,7 +62,7 @@ class App extends Component {
             onSeriesScaleChange={this.handleSeriesScaleChange} />
 
           <div className="content-wrapper">
-            <div className="w-500 mx-auto">
+            <div className="mx-auto" style={{width: "80%", maxWidth: "700px"}}>
 
               <h6 className="flex-grow-1">Bar Chart</h6>
               <p className="mt-0 text-muted">Recommended: Qualitative</p>

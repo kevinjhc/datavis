@@ -14,6 +14,10 @@ const colourOptions = [
   { value: 'sequentialPurple', label: 'Sequential Purple', colors: colors.sequentialPurple },
   { value: 'sequentialBlue', label: 'Sequential Blue', colors: colors.sequentialBlue },
   { value: 'diverging', label: 'Diverging', colors: colors.diverging },
+  { value: 'semantic', label: 'Semantic', colors: colors.semantic },
+  { value: 'ibmQualitativeLight', label: 'IBM Qualitative Light', colors: colors.ibmQualitativeLight },
+  { value: 'ibmQualitativeDark', label: 'IBM Qualitative Dark', colors: colors.ibmQualitativeDark },
+  { value: 'custom', label: 'Custom', colors: ["#E53F36", "#FCA016", "#FFC80F", "#209650", "#3479F2"] },
 ];
 
 const presetBackgroundColors = [
@@ -38,6 +42,7 @@ class Sidebar extends Component {
       displayBackgroundColorPicker: false,
       displayTextColorPicker: false,
       colorScale: "qualitativeLight", // Set default color scale
+      customColors: [],
       seriesScale: 3
     };
   }
@@ -169,16 +174,36 @@ class Sidebar extends Component {
             />
           </div>
 
+          {(() => {
+            if (this.state.colorScale === "custom") {
+              return (
+                <div className="sidebar-link select pt-5">
+                  <div className="form-group">
+                    <textarea
+                      className="form-control form-control-sm"
+                      value="#FFFFFF, #EFEFEF, #CCCCCC"
+                      ></textarea>
+                    <div className="form-text">
+                      Separate HEX codes with commas. Example: #FFFFFF, #EFEFEF, #CCCCCC
+                    </div>
+                  </div>
+                </div>
+              )
+            } else {
+              return (
+                colors[this.state.colorScale].map((value, index) => {
+                  return (
+                    <div key={index} className="sidebar-link d-flex align-items-center justify-content-between">
+                      {/*<div className="drag"></div>*/}
+                      <span className="circle" style={{background: value}}></span>
+                      <span className="color-value">{value}</span>
+                    </div>
+                  )
+                })
+              )
+            }
+          })()}
 
-          {colors[this.state.colorScale].map((value, index) => {
-            return (
-              <div key={index} className="sidebar-link d-flex align-items-center justify-content-between">
-                <div className="drag"></div>
-                <span className="circle" style={{background: value}}></span>
-                <span className="color-value">{value}</span>
-              </div>
-            )
-          })}
 
         </div>
       </div>
