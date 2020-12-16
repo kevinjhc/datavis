@@ -68,6 +68,7 @@ class StackedBarChart extends Component {
       textColor: this.props.textColor,
       colorScale: this.props.colorScale,
       seriesScale: this.props.seriesScale,
+      customColors: this.props.customColors,
     };
   }
 
@@ -76,6 +77,7 @@ class StackedBarChart extends Component {
       textColor: nextProps.textColor,
       colorScale: nextProps.colorScale,
       seriesScale: nextProps.seriesScale,
+      customColors: nextProps.customColors,
     });
   }
 
@@ -115,6 +117,13 @@ class StackedBarChart extends Component {
       keys = [ "Category", "Category 2", "Category 3", "Category 4", "Category 5", "Category 6" ];
     }
 
+    let colorss;
+    if (this.state.colorScale === "custom") {
+      colorss = this.state.customColors;
+    } else {
+      colorss = colors[this.state.colorScale];
+    }
+
     return (
     <>
       <ResponsiveBar
@@ -123,7 +132,7 @@ class StackedBarChart extends Component {
         margin={{ top: 20, right: 130, bottom: 50, left: 60 }}
         padding={0.3}
         innerPadding={1}
-        colors={colors[this.state.colorScale]}
+        colors={colorss}
         // colors={{ scheme: 'blues' }}
         // valueScale={{ type: 'linear' }}
         // indexScale={{ type: 'band', round: true }}

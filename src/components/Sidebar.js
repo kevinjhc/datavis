@@ -17,7 +17,7 @@ const colourOptions = [
   { value: 'semantic', label: 'Semantic', colors: colors.semantic },
   { value: 'ibmQualitativeLight', label: 'IBM Qualitative Light', colors: colors.ibmQualitativeLight },
   { value: 'ibmQualitativeDark', label: 'IBM Qualitative Dark', colors: colors.ibmQualitativeDark },
-  { value: 'custom', label: 'Custom', colors: ["#E53F36", "#FCA016", "#FFC80F", "#209650", "#3479F2"] },
+  { value: 'custom', label: 'Custom', colors: [] },
 ];
 
 const presetBackgroundColors = [
@@ -42,8 +42,9 @@ class Sidebar extends Component {
       displayBackgroundColorPicker: false,
       displayTextColorPicker: false,
       colorScale: "qualitativeLight", // Set default color scale
+      seriesScale: 3,
       customColors: [],
-      seriesScale: 3
+      selectValue: ''
     };
   }
 
@@ -74,6 +75,23 @@ class Sidebar extends Component {
       colorScale: e.value,
     });
     this.props.onColorScaleChange(e.value);
+  };
+
+  handleCustomColorScaleChange = e => {
+    this.setState({
+      colorScale: "custom",
+      selectValue: e.target.value
+    });
+  };
+
+  handleCustomColorScaleChangeOnBlur = e => {
+    let colors = e.target.value.split(",");
+    this.setState({
+      colorScale: "custom",
+      customColors: colors,
+      selectValue: e.target.value
+    });
+    this.props.onCustomColorScaleChange(colors);
   };
 
   handleSeriesScaleChange = val => {
@@ -181,8 +199,9 @@ class Sidebar extends Component {
                   <div className="form-group">
                     <textarea
                       className="form-control form-control-sm"
-                      value="#FFFFFF, #EFEFEF, #CCCCCC"
-                      ></textarea>
+                      value={this.state.selectValue}
+                      onChange={this.handleCustomColorScaleChange}
+                      onBlur={this.handleCustomColorScaleChangeOnBlur}></textarea>
                     <div className="form-text">
                       Separate HEX codes with commas. Example: #FFFFFF, #EFEFEF, #CCCCCC
                     </div>

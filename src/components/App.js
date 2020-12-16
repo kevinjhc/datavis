@@ -20,13 +20,15 @@ class App extends Component {
       backgroundColor: '#ffffff',
       textColor: '#000000',
       colorScale: "qualitativeLight",
-      seriesScale: 3
+      seriesScale: 3,
+      customColors: []
     };
 
     this.handleBackgroundColorChange = this.handleBackgroundColorChange.bind(this);
     this.handleTextColorChange = this.handleTextColorChange.bind(this);
     this.handleColorScaleChange = this.handleColorScaleChange.bind(this);
     this.handleSeriesScaleChange = this.handleSeriesScaleChange.bind(this);
+    this.handleCustomColorScaleChange = this.handleCustomColorScaleChange.bind(this);
   }
 
   handleBackgroundColorChange(color) {
@@ -45,6 +47,13 @@ class App extends Component {
     this.setState({seriesScale: colorScale});
   }
 
+  handleCustomColorScaleChange(colorScale) {
+    this.setState({
+      colorScale: "custom",
+      customColors: colorScale
+    });
+  }
+
   render() {
 
     return (
@@ -59,7 +68,9 @@ class App extends Component {
             colorScale={this.state.colorScale}
             onColorScaleChange={this.handleColorScaleChange}
             seriesScale={this.state.seriesScale}
-            onSeriesScaleChange={this.handleSeriesScaleChange} />
+            onSeriesScaleChange={this.handleSeriesScaleChange}
+            customColors={this.state.customColors}
+            onCustomColorScaleChange={this.handleCustomColorScaleChange} />
 
           <div className="content-wrapper">
             <div className="mx-auto" style={{width: "80%", maxWidth: "700px"}}>
@@ -83,7 +94,8 @@ class App extends Component {
                   key={this.state.textColor}
                   textColor={this.state.textColor}
                   colorScale={this.state.colorScale}
-                  seriesScale={this.state.seriesScale} />
+                  seriesScale={this.state.seriesScale}
+                  customColors={this.state.customColors} />
               </div>
 
               <hr />
