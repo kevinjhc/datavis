@@ -60,13 +60,17 @@ class BarChart extends Component {
       updatedColors = colors[this.state.colorScale];
     }
 
+    let keys;
     let displayData;
     if (this.state.seriesScale === 1) {
       displayData = data.slice(0, 1);
+      keys = ["1"];
     } else if (this.state.seriesScale === 3) {
       displayData = data.slice(0, 3);
+      keys = ["1", "2", "3"];
     } else if (this.state.seriesScale === 5) {
       displayData = data;
+      keys = ["1", "2", "3", "4", "5", "6"];
     }
 
     return (
