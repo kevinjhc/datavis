@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/datavis/static/css/main.5b5eb73b.chunk.css",
+    "main.js": "/datavis/static/js/main.8534fcbc.chunk.js",
+    "main.js.map": "/datavis/static/js/main.8534fcbc.chunk.js.map",
+    "runtime-main.js": "/datavis/static/js/runtime-main.25fe5dd6.js",
+    "runtime-main.js.map": "/datavis/static/js/runtime-main.25fe5dd6.js.map",
+    "static/css/2.04161cee.chunk.css": "/datavis/static/css/2.04161cee.chunk.css",
+    "static/js/2.e5724e2a.chunk.js": "/datavis/static/js/2.e5724e2a.chunk.js",
+    "static/js/2.e5724e2a.chunk.js.map": "/datavis/static/js/2.e5724e2a.chunk.js.map",
+    "static/js/3.6b98d6c4.chunk.js": "/datavis/static/js/3.6b98d6c4.chunk.js",
+    "static/js/3.6b98d6c4.chunk.js.map": "/datavis/static/js/3.6b98d6c4.chunk.js.map",
+    "index.html": "/datavis/index.html",
+    "static/css/2.04161cee.chunk.css.map": "/datavis/static/css/2.04161cee.chunk.css.map",
+    "static/css/main.5b5eb73b.chunk.css.map": "/datavis/static/css/main.5b5eb73b.chunk.css.map",
+    "static/js/2.e5724e2a.chunk.js.LICENSE.txt": "/datavis/static/js/2.e5724e2a.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.25fe5dd6.js",
+    "static/css/2.04161cee.chunk.css",
+    "static/js/2.e5724e2a.chunk.js",
+    "static/css/main.5b5eb73b.chunk.css",
+    "static/js/main.8534fcbc.chunk.js"
+  ]
+}
