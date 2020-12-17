@@ -82,7 +82,8 @@ class App extends Component {
                   key={this.state.textColor}
                   textColor={this.state.textColor}
                   colorScale={this.state.colorScale}
-                  seriesScale={this.state.seriesScale} />
+                  seriesScale={this.state.seriesScale}
+                  customColors={this.state.customColors} />
               </div>
 
               <hr />
@@ -107,7 +108,8 @@ class App extends Component {
                   key={this.state.textColor}
                   textColor={this.state.textColor}
                   colorScale={this.state.colorScale}
-                  seriesScale={this.state.seriesScale} />
+                  seriesScale={this.state.seriesScale}
+                  customColors={this.state.customColors} />
               </div>
 
               <hr />
@@ -119,7 +121,8 @@ class App extends Component {
                   key={this.state.textColor}
                   textColor={this.state.textColor}
                   colorScale={this.state.colorScale}
-                  seriesScale={this.state.seriesScale} />
+                  seriesScale={this.state.seriesScale}
+                  customColors={this.state.customColors} />
               </div>
 
               <hr />
@@ -131,7 +134,8 @@ class App extends Component {
                   key={this.state.textColor}
                   textColor={this.state.textColor}
                   colorScale={this.state.colorScale}
-                  seriesScale={this.state.seriesScale} />
+                  seriesScale={this.state.seriesScale}
+                  customColors={this.state.customColors} />
               </div>
 
               <hr />
@@ -143,7 +147,8 @@ class App extends Component {
                   key={this.state.textColor}
                   textColor={this.state.textColor}
                   colorScale={this.state.colorScale}
-                  seriesScale={this.state.seriesScale} />
+                  seriesScale={this.state.seriesScale}
+                  customColors={this.state.customColors} />
               </div>
 
               <hr />
@@ -156,7 +161,8 @@ class App extends Component {
                   key={this.state.textColor}
                   textColor={this.state.textColor}
                   colorScale={this.state.colorScale}
-                  seriesScale={this.state.seriesScale} />
+                  seriesScale={this.state.seriesScale}
+                  customColors={this.state.customColors} />
               </div>
 
               <hr />
@@ -167,7 +173,8 @@ class App extends Component {
                   key={this.state.textColor}
                   textColor={this.state.textColor}
                   colorScale={this.state.colorScale}
-                  seriesScale={this.state.seriesScale} />
+                  seriesScale={this.state.seriesScale}
+                  customColors={this.state.customColors} />
               </div>
 
               <hr />

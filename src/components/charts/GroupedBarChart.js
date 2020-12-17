@@ -68,6 +68,7 @@ class GroupedBarChart extends Component {
       textColor: this.props.textColor,
       colorScale: this.props.colorScale,
       seriesScale: this.props.seriesScale,
+      customColors: this.props.customColors
     };
   }
 
@@ -76,10 +77,18 @@ class GroupedBarChart extends Component {
       textColor: nextProps.textColor,
       colorScale: nextProps.colorScale,
       seriesScale: nextProps.seriesScale,
+      customColors: nextProps.customColors
     });
   }
 
   render() {
+
+    let updatedColors;
+    if (this.state.colorScale === "custom") {
+      updatedColors = this.state.customColors;
+    } else {
+      updatedColors = colors[this.state.colorScale];
+    }
 
     let displayData;
     let truncatedData = [];
@@ -124,7 +133,8 @@ class GroupedBarChart extends Component {
         padding={0.3}
         innerPadding={2}
         groupMode="grouped"
-        colors={colors[this.state.colorScale]}
+        // colors={colors[this.state.colorScale]}
+        colors={updatedColors}
         axisTop={null}
         axisRight={null}
         axisBottom={{

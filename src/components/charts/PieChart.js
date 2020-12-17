@@ -45,6 +45,7 @@ class PieChart extends Component {
       textColor: this.props.textColor,
       colorScale: this.props.colorScale,
       seriesScale: this.props.seriesScale,
+      customColors: this.props.customColors
     };
   }
 
@@ -53,10 +54,18 @@ class PieChart extends Component {
       textColor: nextProps.textColor,
       colorScale: nextProps.colorScale,
       seriesScale: nextProps.seriesScale,
+      customColors: nextProps.customColors
     });
   }
 
   render() {
+    let updatedColors;
+    if (this.state.colorScale === "custom") {
+      updatedColors = this.state.customColors;
+    } else {
+      updatedColors = colors[this.state.colorScale];
+    }
+
     let displayData;
     if (this.state.seriesScale === 1) {
       displayData = data.slice(0, 1);
@@ -73,7 +82,8 @@ class PieChart extends Component {
         margin={{ top: 20, right: 80, bottom: 80, left: 80 }}
         innerRadius={0.5}
         padAngle={0.7}
-        colors={colors[this.state.colorScale]}
+        // colors={colors[this.state.colorScale]}
+        colors={updatedColors}
         radialLabelsSkipAngle={10}
         radialLabelsLinkColor={{ from: 'color' }}
         sliceLabelsSkipAngle={10}

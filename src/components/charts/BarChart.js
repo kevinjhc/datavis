@@ -38,6 +38,7 @@ class BarChart extends Component {
       textColor: this.props.textColor,
       colorScale: this.props.colorScale,
       seriesScale: this.props.seriesScale,
+      customColors: this.props.customColors
     };
   }
 
@@ -46,10 +47,18 @@ class BarChart extends Component {
       textColor: nextProps.textColor,
       colorScale: nextProps.colorScale,
       seriesScale: nextProps.seriesScale,
+      customColors: nextProps.customColors
     });
   }
 
   render() {
+
+    let updatedColors;
+    if (this.state.colorScale === "custom") {
+      updatedColors = this.state.customColors;
+    } else {
+      updatedColors = colors[this.state.colorScale];
+    }
 
     let displayData;
     if (this.state.seriesScale === 1) {
@@ -66,7 +75,8 @@ class BarChart extends Component {
         data={displayData}
         margin={{ top: 20, right: 20, bottom: 50, left: 60 }}
         padding={0.3}
-        colors={colors[this.state.colorScale]}
+        // colors={colors[this.state.colorScale]}
+        colors={updatedColors}
         axisTop={null}
         axisRight={null}
         axisBottom={{

@@ -1,3 +1,7 @@
+Customization
+-- Better colors for complex graphs
+-- Re-order colors
+
 Chart Types
 -- Funnel
 -- Sparklines (qual or semantic)
@@ -5,9 +9,3 @@ Chart Types
 -- Map (bubbles)
 -- Treemap
 -- Choropleth
-
-
-
-Customization
--- Re-order colors
--- Better colors for complex graphs

@@ -117,11 +117,11 @@ class StackedBarChart extends Component {
       keys = [ "Category", "Category 2", "Category 3", "Category 4", "Category 5", "Category 6" ];
     }
 
-    let colorss;
+    let updatedColors;
     if (this.state.colorScale === "custom") {
-      colorss = this.state.customColors;
+      updatedColors = this.state.customColors;
     } else {
-      colorss = colors[this.state.colorScale];
+      updatedColors = colors[this.state.colorScale];
     }
 
     return (
@@ -132,9 +132,9 @@ class StackedBarChart extends Component {
         margin={{ top: 20, right: 130, bottom: 50, left: 60 }}
         padding={0.3}
         innerPadding={1}
-        colors={colorss}
+        colors={updatedColors}
         // colors={{ scheme: 'blues' }}
-        // valueScale={{ type: 'linear' }}
+        valueScale={{ type: 'linear' }}
         // indexScale={{ type: 'band', round: true }}
         axisTop={null}
         axisRight={null}

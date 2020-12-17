@@ -59,6 +59,7 @@ class RadarChart extends Component {
       textColor: this.props.textColor,
       colorScale: this.props.colorScale,
       seriesScale: this.props.seriesScale,
+      customColors: this.props.customColors
     };
   }
 
@@ -67,10 +68,18 @@ class RadarChart extends Component {
       textColor: nextProps.textColor,
       colorScale: nextProps.colorScale,
       seriesScale: nextProps.seriesScale,
+      customColors: nextProps.customColors
     });
   }
 
   render() {
+    let updatedColors;
+    if (this.state.colorScale === "custom") {
+      updatedColors = this.state.customColors;
+    } else {
+      updatedColors = colors[this.state.colorScale];
+    }
+
     let displayData;
     let truncatedData = [];
     let keys;
@@ -122,7 +131,8 @@ class RadarChart extends Component {
         dotBorderWidth={2}
         dotBorderColor={{ from: 'color' }}
         enableDotLabel={false}
-        colors={colors[this.state.colorScale]}
+        // colors={colors[this.state.colorScale]}
+        colors={updatedColors}
         blendMode="multiply"
         enableLabel={false}
         isInteractive={false}

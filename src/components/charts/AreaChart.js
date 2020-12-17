@@ -188,6 +188,7 @@ class AreaChart extends Component {
       textColor: this.props.textColor,
       colorScale: this.props.colorScale,
       seriesScale: this.props.seriesScale,
+      customColors: this.props.customColors
     };
   }
 
@@ -196,10 +197,18 @@ class AreaChart extends Component {
       textColor: nextProps.textColor,
       colorScale: nextProps.colorScale,
       seriesScale: nextProps.seriesScale,
+      customColors: nextProps.customColors
     });
   }
 
   render() {
+    let updatedColors;
+    if (this.state.colorScale === "custom") {
+      updatedColors = this.state.customColors;
+    } else {
+      updatedColors = colors[this.state.colorScale];
+    }
+
     let displayData;
     if (this.state.seriesScale === 1) {
       displayData = data.slice(0, 1);
@@ -217,7 +226,8 @@ class AreaChart extends Component {
       xScale={{ type: 'point' }}
       yScale={{ type: 'linear', min: 'auto', max: 'auto', stacked: true, reverse: false }}
       yFormat=" >-.2f"
-      colors={colors[this.state.colorScale]}
+      // colors={colors[this.state.colorScale]}
+      colors={updatedColors}
       axisTop={null}
       axisRight={null}
       enableArea={true}

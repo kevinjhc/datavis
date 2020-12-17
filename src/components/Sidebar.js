@@ -184,7 +184,7 @@ class Sidebar extends Component {
 
           <h5 className="sidebar-title">Colors</h5>
 
-          <div className="sidebar-link select">
+          <div className="sidebar-link select mb-5">
             <Select
               defaultValue={colourOptions[0]}
               options={colourOptions}

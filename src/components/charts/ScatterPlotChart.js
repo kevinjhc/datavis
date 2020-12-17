@@ -572,6 +572,7 @@ class ScatterplotChart extends Component {
       textColor: this.props.textColor,
       colorScale: this.props.colorScale,
       seriesScale: this.props.seriesScale,
+      customColors: this.props.customColors
     };
   }
 
@@ -580,10 +581,18 @@ class ScatterplotChart extends Component {
       textColor: nextProps.textColor,
       colorScale: nextProps.colorScale,
       seriesScale: nextProps.seriesScale,
+      customColors: nextProps.customColors
     });
   }
 
   render() {
+    let updatedColors;
+    if (this.state.colorScale === "custom") {
+      updatedColors = this.state.customColors;
+    } else {
+      updatedColors = colors[this.state.colorScale];
+    }
+
     let displayData;
     if (this.state.seriesScale === 1) {
       displayData = data.slice(0, 1);
@@ -602,7 +611,8 @@ class ScatterplotChart extends Component {
         xFormat={function(e){return e+" kg"}}
         yScale={{ type: 'linear', min: 0, max: 'auto' }}
         yFormat={function(e){return e+" cm"}}
-        colors={colors[this.state.colorScale]}
+        // colors={colors[this.state.colorScale]}
+        colors={updatedColors}
         blendMode="multiply"
         axisTop={null}
         axisRight={null}
